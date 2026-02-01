@@ -1,0 +1,9 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+api/data/
+api/app/__pycache__/
+api/app/**/__pycache__/
+api/venv_setup.ps1
+git_push.ps1

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>병원 업무 흐름 데모</title>
+    <style>
+      :root {
+        --bg: #f5f6fa;
+        --bg-soft: #f9fafb;
+        --panel: #ffffff;
+        --text: #111827;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --outline: #6b7280;
+        --success: #16a34a;
+        --warning: #f59e0b;
+        --danger: #dc2626;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, 92%);
+        margin: 0 auto;
+      }
+
+      header,
+      section {
+        padding: 72px 0;
+      }
+
+      header {
+        background: var(--bg-soft);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: #1e40af;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .hero-title {
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 700;
+        margin: 16px 0 12px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .btn {
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+        border: 1px solid var(--outline);
+        color: var(--outline);
+        background: transparent;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: rgba(71, 85, 105, 0.12);
+      }
+
+      .btn-primary {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        border-color: var(--primary-hover);
+      }
+
+      .section-title {
+        font-size: clamp(22px, 3vw, 30px);
+        margin-bottom: 12px;
+      }
+
+      .cta-card {
+        display: grid;
+        gap: 16px;
+      }
+
+      form {
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 14px;
+        background: #ffffff;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 1px;
+      }
+
+      .footer {
+        padding: 36px 0 60px;
+        border-top: 1px solid var(--border);
+        background: var(--bg-soft);
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      @media (max-width: 768px) {
+        header,
+        section {
+          padding: 56px 0;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container grid grid-2">
+        <div>
+          <span class="badge">공개 데모 페이지</span>
+          <h1 class="hero-title">병원 업무 흐름을 예시로 보여주는 데모</h1>
+          <p class="muted">
+            상업적 제안이 아닌, 화면 구성과 데이터 흐름을 참고하기 위한 샘플입니다.
+            접수부터 진료 기록까지의 흐름을 예시로 정리했습니다.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#demo">데모 구성 보기</a>
+            <a class="btn" href="#features">기능 예시</a>
+            <a class="btn" href="#contact">피드백 보내기</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>데모 안내</h3>
+          <ul class="muted">
+            <li>실제 판매/견적 목적이 아닌 참고용 구성</li>
+            <li>현장 기록 흐름을 이해하기 위한 예시</li>
+            <li>의료 데이터 저장 목적이 아닌 샘플</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#faq">FAQ</a>
+            <a class="btn" href="#contact">연락 남기기</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="benefits">
+      <div class="container">
+        <h2 class="section-title">데모에서 보여주는 흐름 포인트</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>접수-진료 흐름</h3>
+            <p class="muted">접수 → 대기 → 진료 흐름을 한 화면에 정리하는 예시입니다.</p>
+          </div>
+          <div class="card">
+            <h3>기록 중심 관리</h3>
+            <p class="muted">기본 기록을 모아 확인할 수 있도록 구성했습니다.</p>
+          </div>
+          <div class="card">
+            <h3>확장 가능 구조</h3>
+            <p class="muted">작게 시작하고 단계적으로 확장하는 구조 예시입니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" style="background: var(--bg-soft);">
+      <div class="container">
+        <h2 class="section-title">기능 예시 6가지</h2>
+        <div class="grid grid-3">
+          <div class="card"><strong>접수/대기 현황</strong><p class="muted">접수부터 진료까지의 상태 흐름 예시.</p></div>
+          <div class="card"><strong>기본 기록</strong><p class="muted">진료 기록 요약 입력 예시.</p></div>
+          <div class="card"><strong>처치/처방 메모</strong><p class="muted">메모 기반 기록 예시.</p></div>
+          <div class="card"><strong>방문 이력</strong><p class="muted">방문 기록 모아보기 예시.</p></div>
+          <div class="card"><strong>특이사항 기록</strong><p class="muted">주의사항 기록 방식 예시.</p></div>
+          <div class="card"><strong>간단 통계</strong><p class="muted">기본 리포트 구성 예시.</p></div>
+        </div>
+        <p class="muted" style="margin-top: 16px;">
+          병원 예시를 기준으로 하되, 현장 서비스업에도 응용 가능합니다.
+        </p>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="container">
+        <h2 class="section-title">데모 구성 예시</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>기록 중심 화면</h3>
+            <p class="muted">접수/진료/기록이 연결되는 화면 구성 예시.</p>
+          </div>
+          <div class="card">
+            <h3>현장 업무 흐름</h3>
+            <p class="muted">업무 단계 이동과 확인 흐름 예시.</p>
+          </div>
+          <div class="card">
+            <h3>기본 리포트</h3>
+            <p class="muted">단순 통계와 요약 화면 예시.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="who" style="background: var(--bg-soft);">
+      <div class="container">
+        <h2 class="section-title">이 데모가 적합한 경우</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <ul class="muted">
+              <li>업무 흐름/화면 구성 참고가 필요한 경우</li>
+              <li>기록 중심 관리 흐름을 보고 싶은 경우</li>
+              <li>간단한 프로토타입 구조가 필요한 경우</li>
+              <li>병원 예시 기반의 흐름을 보고 싶은 경우</li>
+            </ul>
+          </div>
+          <div class="card">
+            <ul class="muted">
+              <li>즉시 상용 서비스 도입을 원하는 경우</li>
+              <li>대규모 연동이 필요한 경우</li>
+              <li>완전 자동화를 기대하는 경우</li>
+              <li>상용 견적/계약 목적의 문의</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">데모 구성 흐름 (참고)</h2>
+        <div class="grid grid-4">
+          <div class="card"><strong>1. 현장 흐름 정리</strong><p class="muted">업무 단계를 정리합니다.</p></div>
+          <div class="card"><strong>2. 화면 구성</strong><p class="muted">필요 화면을 연결합니다.</p></div>
+          <div class="card"><strong>3. 데이터 흐름</strong><p class="muted">입력/저장 구조를 정의합니다.</p></div>
+          <div class="card"><strong>4. 피드백</strong><p class="muted">개선 포인트를 정리합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" style="background: var(--bg-soft);">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <div class="grid grid-2">
+          <div class="card"><strong>이 페이지는 판매용인가요?</strong><p class="muted">아니요. 공개 데모/참고용입니다.</p></div>
+          <div class="card"><strong>데이터는 어디에 저장되나요?</strong><p class="muted">로컬 SQLite DB에 저장됩니다.</p></div>
+          <div class="card"><strong>상용 문의를 받아도 되나요?</strong><p class="muted">이 페이지는 상업적 목적이 아닙니다.</p></div>
+          <div class="card"><strong>커스터마이징은 지원하나요?</strong><p class="muted">데모 목적이므로 별도 지원하지 않습니다.</p></div>
+          <div class="card"><strong>의료정보를 저장하나요?</strong><p class="muted">아니요. 예시용 텍스트만 저장합니다.</p></div>
+          <div class="card"><strong>다른 업종에 참고 가능?</strong><p class="muted">현장 서비스업 흐름에 참고 가능합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container grid grid-2">
+        <div>
+          <h2 class="section-title">피드백/연락</h2>
+          <p class="muted">
+            데모 사용 후 개선 의견이나 오류를 알려주세요.
+            상업적 상담/견적 요청은 받지 않습니다.
+          </p>
+          <div class="cta-card">
+            <div class="card">
+              <strong>연락 목적</strong>
+              <p class="muted">1) 데모 피드백 2) 오류 제보 3) 참고 요청</p>
+            </div>
+            <div class="card">
+              <strong>응답</strong>
+              <p class="muted">가능한 범위 내에서 순차적으로 확인합니다.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <form id="feedbackForm">
+            <div>
+              <label for="name">이름 *</label>
+              <input id="name" name="name" required />
+            </div>
+            <div>
+              <label for="phone">연락처 *</label>
+              <input id="phone" name="phone" required />
+            </div>
+            <div>
+              <label for="email">이메일</label>
+              <input id="email" name="email" type="email" />
+            </div>
+            <div>
+              <label for="organization">소속/기관명</label>
+              <input id="organization" name="organization" />
+            </div>
+            <div>
+              <label for="message">피드백 내용 *</label>
+              <textarea id="message" name="message" rows="5" minlength="10" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">피드백 보내기</button>
+            <p id="formStatus" class="muted"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© Hospital Ops Demo. 공개 데모/참고용 페이지입니다.</p>
+      </div>
+    </footer>
+
+    <script>
+      const API_BASE_URL = "http://localhost:8000";
+      const form = document.getElementById("feedbackForm");
+      const statusEl = document.getElementById("formStatus");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        statusEl.textContent = "전송 중입니다...";
+        const payload = {
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          email: form.email.value.trim() || null,
+          organization: form.organization.value.trim() || null,
+          message: form.message.value.trim(),
+          source_url: window.location.href,
+        };
+
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/feedback`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!res.ok) {
+            throw new Error("요청에 실패했습니다.");
+          }
+
+          statusEl.textContent = "피드백이 정상 접수되었습니다.";
+          form.reset();
+        } catch (error) {
+          statusEl.textContent = "전송에 실패했습니다. 잠시 후 다시 시도해주세요.";
+        }
+      });
+    </script>
+  </body>
+</html>
