@@ -63,7 +63,7 @@ def get_settings() -> Settings:
     allowed_origins = _split_csv(os.getenv("ALLOWED_ORIGINS", ""))
 
     return Settings(
-        app_name=os.getenv("APP_NAME", "Hospital Ops Demo API"),
+        app_name=os.getenv("APP_NAME", "Practice Feedback API"),
         log_level=os.getenv("LOG_LEVEL", "INFO"),
         sqlite_path=os.getenv("SQLITE_PATH", "./data/feedback.db"),
         allowed_origins=allowed_origins,

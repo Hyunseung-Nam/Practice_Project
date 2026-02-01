@@ -1,10 +1,10 @@
-# Hospital Ops Demo (Public)
+# Practice Project (Public)
 
-병원/의료 현장 업무 흐름을 예시로 보여주는 **공개 데모 프로젝트**입니다.  
+업무 흐름을 예시로 보여주는 **연습용 프로젝트**입니다.  
 상업적 제안/판매 목적이 아니라, 화면 구성과 데이터 흐름을 참고하기 위한 샘플입니다.
 
 ## 구성
-- `landing_page/` : 데모용 1페이지 HTML (정적)
+- `landing_page/` : 연습용 1페이지 HTML (정적)
 - `api/` : 피드백 수집 API (FastAPI + SQLite)
 
 ## 랜딩 페이지 보기
@@ -36,7 +36,7 @@ docker compose up --build
 ## 환경 변수
 `.env.example`을 복사해 `.env`로 만들고 필요한 값을 수정합니다.
 ```
-APP_NAME=...
+APP_NAME=Practice Feedback API
 LOG_LEVEL=INFO
 SQLITE_PATH=./data/feedback.db
 ALLOWED_ORIGINS=http://localhost:5500,http://127.0.0.1:5500
@@ -53,7 +53,7 @@ WEBHOOK_URL=
 ```
 curl -X POST http://localhost:8000/api/feedback \
   -H "Content-Type: application/json" \
-  -d "{\"name\":\"홍길동\",\"email\":\"test@example.com\",\"phone\":\"010-1234-5678\",\"organization\":\"OO병원\",\"message\":\"데모 피드백입니다.\",\"source_url\":\"http://localhost\"}"
+  -d "{\"name\":\"홍길동\",\"email\":\"test@example.com\",\"phone\":\"010-1234-5678\",\"organization\":\"연습팀\",\"message\":\"연습용 피드백입니다.\",\"source_url\":\"http://localhost\"}"
 ```
 
 ## 피드백 확인
